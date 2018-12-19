@@ -37,16 +37,81 @@
     color: #78aa3a;
 }
 
+/* BEGIN ADD SIMPLE PRODUCT PAGE CSS */
+.jre-custom-tooltip-wrapper img{
+    width: 12px;
+    cursor:pointer;
+}
+
+.jre-custom-tooltip-wrapper{
+    float: left;
+    margin-right: 4px;
+    position: relative;
+    top: 1px;
+    z-index:9;
+}
+
+.jre-custom-tooltip-wrapper-special, .jre-custom-tooltip-wrapper-regprice{
+    top: -1px;
+}
+
+.jre-custom-tooltip-wrapper-media{
+    top: -3px;
+}
 
 
+/* END ADD SIMPLE PRODUCT PAGE CSS */
 
+.jre-custom-tooltip-modal {
+    z-index:9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
 
+.jre-custom-tooltip-modal h4{
+    text-decoration:underline;
+    display: inline-block;
+}
 
+.jre-custom-tooltip-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
 
+#jre-custom-tooltip-modal-close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: #78aa3a;
+    color: white;
+}
 
+.close-button:hover {
+    background-color: darkgray;
+}
 
-
-
+.jre-custom-tooltip-owl{
+    width: 35px;
+    display: inline-block;
+    margin-right: 5px;
+    position: relative;
+    bottom: 5px;
+}
 
 
 

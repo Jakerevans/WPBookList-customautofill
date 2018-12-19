@@ -59,7 +59,7 @@ global $wpdb;
 /* CONSTANT DEFINITIONS */
 
 	// Extension version number.
-	define( 'CUSTOMAUTOFILL_VERSION_NUM', '0.0.1' );
+	define( 'CUSTOMAUTOFILL_VERSION_NUM', '2.0' );
 
 	// Root plugin folder directory.
 	define( 'CUSTOMAUTOFILL_ROOT_DIR', plugin_dir_path( __FILE__ ) );
@@ -174,6 +174,8 @@ global $wpdb;
 
 	// Runs once upon extension activation and adds it's version number to the 'extensionversions' column in the 'wpbooklist_jre_user_options' table of the core plugin.
 	register_activation_hook( __FILE__, array( $customautofill_general_functions, 'wpbooklist_customautofill_record_extension_version' ) );
+
+	add_action( 'save_post', array( $customautofill_general_functions, 'jre_custom_add_stock_on_product_creation' ), 10, 3 );
 
 
 

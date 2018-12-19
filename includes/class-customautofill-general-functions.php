@@ -18,6 +18,33 @@ if ( ! class_exists( 'CustomAutofill_General_Functions', false ) ) :
 	 */
 	class CustomAutofill_General_Functions {
 
+		/** Function that sets the book's stock avaialbilty and sets the manage_stock option.
+		 *
+		 *  @param object $post - The post object.
+		 */
+		public function jre_custom_add_stock_on_product_creation( $product_id, $post, $update ) {
+
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return;
+			} else {
+
+				if ( 'product' === $post->post_type ) {
+					if ( isset( $_POST['wcv_custom_product_stock'] ) ) {
+						$wcv_custom_product_stock = wp_unslash( $_POST['wcv_custom_product_stock'] );
+						error_log('$wcv_custom_product_stock is: ' . $wcv_custom_product_stock);
+						update_post_meta( $post->ID, '_manage_stock', 'yes' );
+
+						// If user didn't enter a quantity amount, set to 1.
+						if ( '' === $wcv_custom_product_stock || null === $wcv_custom_product_stock || 0 === $wcv_custom_product_stock || '0' === $wcv_custom_product_stock ) {
+							update_post_meta( $post->ID, '_stock', 1 );
+						} else {
+							update_post_meta( $post->ID, '_stock', $wcv_custom_product_stock );
+						}
+					}
+				}
+			}
+		}
+
 		/** Functions that loads up the menu page entry for this Extension.
 		 *
 		 *  @param array $submenu_array - The array that contains submenu entries to add to.
